@@ -1,0 +1,5 @@
+eureka:
+  client:
+    service-url:
+      #默认的服务注册地址
+      defaultZone: http://192.168.1.220:8761/eureka/

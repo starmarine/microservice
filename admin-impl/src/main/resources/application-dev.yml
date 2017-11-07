@@ -1,0 +1,13 @@
+eureka:
+  client:
+    service-url:
+      #默认的服务注册地址
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://192.168.1.250:27017/test
+  redis:
+    host: localhost
+    port: 6379

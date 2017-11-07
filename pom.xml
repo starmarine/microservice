@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.4.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.zrkj</groupId>
+	<artifactId>administration</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<modules>
+		<module>admin-model</module>
+		<module>admin-dao</module>
+		<module>admin-service</module>
+		<module>admin-api</module>
+		<module>admin-impl</module>
+		<module>admin-web</module>
+	</modules>
+
+	<!--添加依赖 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.boot.version>1.5.6.RELEASE</spring.boot.version>
+		<spring-cloud-netflix>1.3.5.RELEASE</spring-cloud-netflix>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.SR4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.zrkj</groupId>
+				<artifactId>root-dependency</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			 
+			<!-- 工程自己的模块依赖 -->
+			<dependency>
+				<groupId>com.zrkj</groupId>
+				<artifactId>admin-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.zrkj</groupId>
+				<artifactId>admin-dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zrkj</groupId>
+				<artifactId>admin-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.zrkj</groupId>
+				<artifactId>admin-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>2.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>2.2.2</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+
+	</dependencies>
+	
+	<distributionManagement>
+		<repository>
+			<id>deploy-releases</id>
+			<url>http://192.168.1.217:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>deploy-snapshots</id>
+			<url>http://192.168.1.217:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	<repositories>  
+        <repository>  
+            <id>nexus-releases</id>  
+            <name>nexus</name>  
+            <url>http://192.168.1.217:8081/nexus/content/repositories/releases</url>  
+        </repository>  
+        <repository>  
+            <id>nexus-snapshots</id>  
+            <name>nexus</name>  
+            <url>http://192.168.1.217:8081/nexus/content/repositories/snapshots</url>  
+        </repository> 
+    </repositories>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
